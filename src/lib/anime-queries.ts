@@ -31,7 +31,7 @@ export const seasonNowQuery = (limit = 12) =>
     ...shared,
   });
 
-export const searchQuery = (params: { q: string; page: number; genres?: string }) =>
+export const searchQuery = (params: { q: string; page: number; genres?: string | undefined }) =>
   queryOptions({
     queryKey: ["jikan", "search", params.q, params.page, params.genres ?? ""],
     queryFn: () =>

@@ -166,10 +166,10 @@ async function request<T>(path: string, params?: Record<string, string | number 
 export type TopFilter = "airing" | "upcoming" | "bypopularity" | "favorite";
 
 export async function getTopAnime(opts: {
-  filter?: TopFilter;
-  limit?: number;
-  page?: number;
-  type?: string;
+  filter?: TopFilter | undefined;
+  limit?: number | undefined;
+  page?: number | undefined;
+  type?: string | undefined;
 } = {}) {
   return request<Paged<Anime>>("/top/anime", {
     filter: opts.filter,
@@ -186,12 +186,12 @@ export async function getCurrentSeason(limit = 12) {
 
 export async function searchAnime(opts: {
   q: string;
-  page?: number;
-  limit?: number;
-  genres?: string;
-  orderBy?: string;
-  sort?: "asc" | "desc";
-  minScore?: number;
+  page?: number | undefined;
+  limit?: number | undefined;
+  genres?: string | undefined;
+  orderBy?: string | undefined;
+  sort?: "asc" | "desc" | undefined;
+  minScore?: number | undefined;
 }) {
   return request<Paged<Anime>>("/anime", {
     q: opts.q || undefined,
