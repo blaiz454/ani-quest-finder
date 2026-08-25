@@ -39,7 +39,7 @@ function Meta({
   );
 }
 
-function EntityList({ items, label }: { items?: JikanEntity[]; label: string }) {
+function EntityList({ items, label }: { items?: JikanEntity[] | undefined; label: string }) {
   if (!items || items.length === 0) return null;
   return (
     <div>

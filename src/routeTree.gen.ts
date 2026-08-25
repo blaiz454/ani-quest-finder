@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as GenresRouteImport } from './routes/genres'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as AnimeIdRouteImport } from './routes/anime.$id'
+import { Route as GenreSlugRouteImport } from './routes/genre.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +26,75 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GenresRoute = GenresRouteImport.update({
+  id: '/genres',
+  path: '/genres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnimeIdRoute = AnimeIdRouteImport.update({
+  id: '/anime/$id',
+  path: '/anime/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenreSlugRoute = GenreSlugRouteImport.update({
+  id: '/genre/$slug',
+  path: '/genre/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/genres': typeof GenresRoute
+  '/search': typeof SearchRoute
+  '/anime/$id': typeof AnimeIdRoute
+  '/genre/$slug': typeof GenreSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/genres': typeof GenresRoute
+  '/search': typeof SearchRoute
+  '/anime/$id': typeof AnimeIdRoute
+  '/genre/$slug': typeof GenreSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/genres': typeof GenresRoute
+  '/search': typeof SearchRoute
+  '/anime/$id': typeof AnimeIdRoute
+  '/genre/$slug': typeof GenreSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    '/' | '/about' | '/genres' | '/search' | '/anime/$id' | '/genre/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/genres' | '/search' | '/anime/$id' | '/genre/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/genres'
+    | '/search'
+    | '/anime/$id'
+    | '/genre/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  GenresRoute: typeof GenresRoute
+  SearchRoute: typeof SearchRoute
+  AnimeIdRoute: typeof AnimeIdRoute
+  GenreSlugRoute: typeof GenreSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +113,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/genres': {
+      id: '/genres'
+      path: '/genres'
+      fullPath: '/genres'
+      preLoaderRoute: typeof GenresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/anime/$id': {
+      id: '/anime/$id'
+      path: '/anime/$id'
+      fullPath: '/anime/$id'
+      preLoaderRoute: typeof AnimeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/genre/$slug': {
+      id: '/genre/$slug'
+      path: '/genre/$slug'
+      fullPath: '/genre/$slug'
+      preLoaderRoute: typeof GenreSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  GenresRoute: GenresRoute,
+  SearchRoute: SearchRoute,
+  AnimeIdRoute: AnimeIdRoute,
+  GenreSlugRoute: GenreSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -14,9 +14,9 @@ const DESCRIPTION =
   "Search thousands of anime by title on AniVault. See scores, release years, episode counts, genres and synopses, then open a full detail page for any series.";
 
 export const Route = createFileRoute("/search")({
-  validateSearch: (search: Record<string, unknown>): SearchParams => ({
-    q: typeof search["q"] === "string" ? search["q"].slice(0, 120) : "",
-    page: Math.max(1, Number(search["page"]) || 1),
+  validateSearch: (search: { q?: unknown; page?: unknown }): SearchParams => ({
+    q: typeof search.q === "string" ? search.q.slice(0, 120) : "",
+    page: Math.max(1, Number(search.page) || 1),
   }),
   head: () => ({
     meta: [
