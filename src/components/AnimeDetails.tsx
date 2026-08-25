@@ -88,7 +88,7 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
             </li>
             <ChevronRight className="size-3.5" aria-hidden="true" />
             <li>
-              <Link to="/search" className="transition-colors hover:text-accent">
+              <Link to="/search" search={{ q: "", page: 1 }} className="transition-colors hover:text-accent">
                 Browse
               </Link>
             </li>

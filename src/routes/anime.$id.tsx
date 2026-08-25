@@ -118,6 +118,7 @@ function AnimeDetailPage() {
         <div className="mt-10">
           <Link
             to="/search"
+            search={{ q: "", page: 1 }}
             className="glass inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />

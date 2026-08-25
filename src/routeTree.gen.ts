@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as GenresRouteImport } from './routes/genres'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AnimeIdRouteImport } from './routes/anime.$id'
 import { Route as GenreSlugRouteImport } from './routes/genre.$slug'
 
@@ -36,6 +37,11 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnimeIdRoute = AnimeIdRouteImport.update({
   id: '/anime/$id',
   path: '/anime/$id',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/genres': typeof GenresRoute
   '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/anime/$id': typeof AnimeIdRoute
   '/genre/$slug': typeof GenreSlugRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/genres': typeof GenresRoute
   '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/anime/$id': typeof AnimeIdRoute
   '/genre/$slug': typeof GenreSlugRoute
 }
@@ -69,21 +77,36 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/genres': typeof GenresRoute
   '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/anime/$id': typeof AnimeIdRoute
   '/genre/$slug': typeof GenreSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/genres' | '/search' | '/anime/$id' | '/genre/$slug'
+    | '/'
+    | '/about'
+    | '/genres'
+    | '/search'
+    | '/sitemap.xml'
+    | '/anime/$id'
+    | '/genre/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/genres' | '/search' | '/anime/$id' | '/genre/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/genres'
+    | '/search'
+    | '/sitemap.xml'
+    | '/anime/$id'
+    | '/genre/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/genres'
     | '/search'
+    | '/sitemap.xml'
     | '/anime/$id'
     | '/genre/$slug'
   fileRoutesById: FileRoutesById
@@ -93,6 +116,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   GenresRoute: typeof GenresRoute
   SearchRoute: typeof SearchRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AnimeIdRoute: typeof AnimeIdRoute
   GenreSlugRoute: typeof GenreSlugRoute
 }
@@ -127,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/anime/$id': {
       id: '/anime/$id'
       path: '/anime/$id'
@@ -149,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   GenresRoute: GenresRoute,
   SearchRoute: SearchRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   AnimeIdRoute: AnimeIdRoute,
   GenreSlugRoute: GenreSlugRoute,
 }
