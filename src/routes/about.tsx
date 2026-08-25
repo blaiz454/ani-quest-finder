@@ -101,6 +101,7 @@ function AboutPage() {
       <div className="mt-12 flex flex-wrap gap-3">
         <Link
           to="/search"
+          search={{ q: "", page: 1 }}
           className="inline-flex items-center rounded-full bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
         >
           Start browsing

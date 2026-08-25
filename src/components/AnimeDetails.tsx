@@ -39,7 +39,7 @@ function Meta({
   );
 }
 
-function EntityList({ items, label }: { items?: JikanEntity[]; label: string }) {
+function EntityList({ items, label }: { items?: JikanEntity[] | undefined; label: string }) {
   if (!items || items.length === 0) return null;
   return (
     <div>
@@ -88,7 +88,7 @@ export function AnimeDetails({ anime }: { anime: Anime }) {
             </li>
             <ChevronRight className="size-3.5" aria-hidden="true" />
             <li>
-              <Link to="/search" className="transition-colors hover:text-accent">
+              <Link to="/search" search={{ q: "", page: 1 }} className="transition-colors hover:text-accent">
                 Browse
               </Link>
             </li>
