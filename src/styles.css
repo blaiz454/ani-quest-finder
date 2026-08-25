@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * AniVault design system — deep midnight canvas, electric violet + cyan accents.
+ * AniVault design system — deep black canvas, electric cyan blue accents.
  * All colors are oklch tokens. Never hardcode colors in components.
  */
 
@@ -50,29 +50,29 @@
 :root {
   --radius: 0.9rem;
 
-  --background: oklch(0.16 0.024 285);
-  --foreground: oklch(0.96 0.006 285);
+  --background: oklch(0.06 0 0);
+  --foreground: oklch(0.96 0.01 240);
 
-  --surface: oklch(0.21 0.026 286);
-  --surface-elevated: oklch(0.25 0.03 287);
+  --surface: oklch(0.1 0.015 240);
+  --surface-elevated: oklch(0.14 0.02 240);
 
-  --card: oklch(0.21 0.026 286);
-  --card-foreground: oklch(0.96 0.006 285);
-  --popover: oklch(0.19 0.026 286);
-  --popover-foreground: oklch(0.96 0.006 285);
+  --card: oklch(0.1 0.015 240);
+  --card-foreground: oklch(0.96 0.01 240);
+  --popover: oklch(0.08 0.01 240);
+  --popover-foreground: oklch(0.96 0.01 240);
 
-  --primary: oklch(0.66 0.22 300);
-  --primary-foreground: oklch(0.99 0.004 300);
-  --primary-glow: oklch(0.78 0.16 210);
+  --primary: oklch(0.75 0.14 215);
+  --primary-foreground: oklch(0.1 0.02 220);
+  --primary-glow: oklch(0.85 0.12 215);
 
-  --secondary: oklch(0.27 0.03 287);
-  --secondary-foreground: oklch(0.94 0.008 285);
+  --secondary: oklch(0.14 0.02 240);
+  --secondary-foreground: oklch(0.94 0.008 240);
 
-  --muted: oklch(0.25 0.024 286);
-  --muted-foreground: oklch(0.7 0.02 286);
+  --muted: oklch(0.12 0.015 240);
+  --muted-foreground: oklch(0.7 0.02 240);
 
-  --accent: oklch(0.78 0.16 210);
-  --accent-foreground: oklch(0.17 0.03 250);
+  --accent: oklch(0.82 0.13 215);
+  --accent-foreground: oklch(0.1 0.02 220);
 
   --gold: oklch(0.84 0.16 85);
   --gold-foreground: oklch(0.2 0.04 85);
@@ -82,7 +82,7 @@
 
   --border: oklch(0.99 0 0 / 10%);
   --input: oklch(0.99 0 0 / 14%);
-  --ring: oklch(0.66 0.22 300);
+  --ring: oklch(0.75 0.14 215);
 
   --gradient-primary: linear-gradient(120deg, var(--primary), var(--primary-glow));
   --gradient-surface: linear-gradient(
